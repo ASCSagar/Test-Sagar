@@ -1,10 +1,17 @@
-import './App.css';
-import Sagar from './component/Sagar';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Sagar from "./component/Sagar";
+import Ramani from "./component/Ramani";
+import GoogleCalender from "./component/GoogleCalender";
 
 function App() {
   return (
     <div className="App">
-      <Sagar/>
+      <Routes>
+        <Route path="/" element={<GoogleCalender />} />
+        <Route path="/sagar" element={<Sagar />} />
+        <Route path="/ramani" element={<Ramani />} />
+      </Routes>
     </div>
   );
 }
