@@ -10,39 +10,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: "npm" # Enable caching for npm dependencies
 
-      # Step to install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install # Use npm install instead of npm ci for more flexibility
+        run: npm ci
 
-      # Step to run Prettier check
+      # Step 4: Run Prettier check
       - name: Run Prettier Check
         run: |
-          npx prettier --check "**/*.{js,jsx,ts,tsx,json,css,scss,md}"  # You can adjust file extensions if necessary
+          npx prettier --check "**/*.{js,jsx,ts,tsx,json,css,scss,md}"
 
-      # If Prettier check fails, the job will fail here. Add this step only if you want to enforce style guidelines.
-
-      # Run build if applicable
+      # Step 5: Build the project (if applicable)
       - name: Build project
-        run: npm run build
+        run: npm run build --if-present
 
-      # Deploy to GitHub Pages
+      # Step 6: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 7: Deploy to GitHub Pages
       - name: Deploy 🚀
-        if: success() # Ensure deployment only happens if the build and tests are successful
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build # The folder the action should deploy
