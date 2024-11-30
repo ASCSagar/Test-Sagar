@@ -31,7 +31,7 @@ jobs:
 
       # Step 5: Build the project (if applicable)
       - name: Build project
-        run: npm run build --if-present
+        run: npm run build
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy 🚀
