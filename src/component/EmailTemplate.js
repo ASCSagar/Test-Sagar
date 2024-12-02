@@ -9,7 +9,7 @@ const EmailTemplate = () => {
         process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
         process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID,
         e.target,
-        process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY
+        process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY,
       )
       .then(
         (result) => {
@@ -18,7 +18,7 @@ const EmailTemplate = () => {
         },
         (error) => {
           alert("Something went wrong!", error.text);
-        }
+        },
       );
     e.target.reset();
   };
