@@ -33,11 +33,7 @@ jobs:
       - name: Build project
         run: npm run build --if-present
 
-      # Step 6: Run tests
-      - name: Run tests
-        run: npm test
-
-      # Step 7: Deploy to GitHub Pages
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

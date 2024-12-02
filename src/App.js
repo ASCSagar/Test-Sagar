@@ -1,16 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Sagar from "./component/Sagar";
-import Ramani from "./component/Ramani";
-import Ishwarbhai from "./component/Ishwarbhai";
+import Email from "./component/EmailTemplate";
+import GoogleCalender from "./component/GoogleCalender";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Ishwarbhai />} />
-        <Route path="/sagar" element={<Sagar />} />
-        <Route path="/ramani" element={<Ramani />} />
+        <Route path="/" element={<Email />} />
+        <Route path="/googleCalender" element={<GoogleCalender />} />
       </Routes>
     </div>
   );
